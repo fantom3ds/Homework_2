@@ -20,7 +20,7 @@ import java.util.ArrayList
 class MainActivity : AppCompatActivity() {
 
     private var parties = ArrayList<Party>()
-    private var adapter=PartiesAdapter(parties)
+    private var adapter = PartiesAdapter(parties)
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "НАЗАД", Toast.LENGTH_LONG).show()
         }
 
+        parties_view.adapter = adapter
         parties_view.layoutManager = LinearLayoutManager(this)
 //        parties_view.adapter = PartiesAdapter(
 //            listOf(
@@ -79,14 +80,10 @@ class MainActivity : AppCompatActivity() {
         APIClient.instance.apiService.getParties()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                {
-                    for (party in it){
-                        parties.add(party)
-                    }
-                    parties_view.adapter = PartiesAdapter(parties)
-                },
-                {
+            .subscribe({
+
+                adapter.addParties(it)
+            }, {
                     Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                 })
     }
@@ -110,11 +107,11 @@ class MainActivity : AppCompatActivity() {
 
     //Новая активность закрылась, данные введены, теперь добавляем в адаптер
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if(data!=null){
-            var newparty=data!!.getSerializableExtra("newparty") as Party
-            //adapter.addParty(newparty)
-            parties.add(newparty)
+        if (data != null) {
+            var newparty = data!!.getSerializableExtra("newparty") as Party
+            adapter.addParty(newparty)
             //adapter=PartiesAdapter(parties)
+            Toast.makeText(this, newparty.name, Toast.LENGTH_LONG).show()
             super.onActivityResult(requestCode, resultCode, data)
         }
     }

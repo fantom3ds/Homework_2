@@ -33,13 +33,13 @@ class AddPartyActivity : AppCompatActivity() {
 
         btn_add_party.setOnClickListener {
             party.name = party_name.text.toString()
-            party.date = 16674578457
+            //party.date = 16674578457/1000
 
-//            party.countNewEvent = Random(10).nextInt()
-//            party.currentBalance = Random(10000).nextInt()
-//            party.fullBalance = Random(20000).nextInt()
-//            party.inventedMe = Random(100).nextBoolean()
-//            party.date = Random(10000).nextLong() * 1000
+            party.countNewEvent = Random(10).nextInt()
+            party.currentBalance = Random(100000).nextInt()
+            party.fullBalance = Random(20000).nextInt()
+            party.inventedMe = Random(100).nextBoolean()
+            party.date = Random(10000).nextLong() * 1000
 
             var intent = Intent(this, MainActivity::class.java)
             intent.putExtra("newparty", party)
