@@ -29,8 +29,8 @@ class PartiesAdapter(private var parties: ArrayList<Party>) : RecyclerView.Adapt
             holder.itemView.party_name.text = name
             holder.itemView.event_count.text = countNewEvent.toString()
             holder.itemView.party_balance.text =
-                "${currentBalance?:0 / 100}.${currentBalance?:0 % 100}/${fullBalance?:0 / 100}.${fullBalance?:0 % 100}"
-            //"%d.%02d" попробовать StringFormat
+                //"${currentBalance?:0 / 100}.${currentBalance?:0 % 100}/${fullBalance?:0 / 100}.${fullBalance?:0 % 100}"
+            "%d.%02d/%d.%02d".format((currentBalance?:0)/100,(currentBalance?:0) % 100,(fullBalance?:0) / 100,(fullBalance?:0) % 100)
 
             //поле приглашения
             if (inventedMe == true)
@@ -44,7 +44,7 @@ class PartiesAdapter(private var parties: ArrayList<Party>) : RecyclerView.Adapt
             //инициализируем класс форматтера с паттерном форматирования
             var frm = SimpleDateFormat("dd.MM.yyyy")
             //засовываем в поле отформатированную дату
-            holder.itemView.party_date.text = frm.format(date?:0 * 1000)
+            holder.itemView.party_date.text = frm.format((date?:0) * 1000)
             //если не null то взять то число, иначе то что после ?
         }
     }

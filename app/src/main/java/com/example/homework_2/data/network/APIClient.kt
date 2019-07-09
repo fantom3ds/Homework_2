@@ -24,11 +24,12 @@ class APIClient {
         apiService = createRetrofit("http://5d1c669df31e7f00147eb5e5.mockapi.io/", initOkHttpClient()).create(ApiService::class.java)
     }
 
+    //Без авторизации, для авторизованного нужно создать такой же, но с apikey
     private fun initOkHttpClient(): OkHttpClient {
         return OkHttpClient().newBuilder().apply {
             readTimeout(10, TimeUnit.SECONDS)
             if (BuildConfig.DEBUG) {
-                val interceptor = HttpLoggingInterceptor()
+                val interceptor = HttpLoggingInterceptor()//для логирования запроса
                 interceptor.level = HttpLoggingInterceptor.Level.BODY
                 addInterceptor(interceptor)
             }

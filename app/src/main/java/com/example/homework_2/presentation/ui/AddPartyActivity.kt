@@ -23,7 +23,7 @@ class AddPartyActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_party)
 
         setSupportActionBar(toolbar_back)
-        supportActionBar?.title = "Добавить"
+        supportActionBar?.title = ""
 
         toolbar_back.setNavigationOnClickListener {
             Toast.makeText(this, "НАЗАД", Toast.LENGTH_SHORT).show()
