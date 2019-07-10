@@ -1,4 +1,4 @@
-package com.example.homework_2
+package com.example.homework_2.presentation.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.homework_2.api.APIClient
-import com.example.homework_2.models.Party
+import com.example.homework_2.R
+import com.example.homework_2.data.network.APIClient
+import com.example.homework_2.data.model.Party
+import com.example.homework_2.data.repository.IMainRepository
+import com.example.homework_2.data.repository.MainRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,8 +21,10 @@ import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
-    private var parties = ArrayList<Party>()
-    private var adapter = PartiesAdapter(parties)
+    //private var parties = ArrayList<Party>()
+
+    private var adapter = PartiesAdapter(ArrayList<Party>())
+    var repository: IMainRepository = MainRepository()
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,15 +81,16 @@ class MainActivity : AppCompatActivity() {
 //            )
 //        )
 
-        APIClient.instance.apiService.getParties()
+        repository.getParties()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-
                 adapter.addParties(it)
             }, {
-                    Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
-                })
+                Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+            })
+
+
     }
 
 
@@ -98,7 +103,7 @@ class MainActivity : AppCompatActivity() {
 
     //Нажатие на кнопку "Добавить", открытие новой активности для добавления
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item?.itemId == R.id.add_party) {
+        if (item.itemId == R.id.add_party) {
             Toast.makeText(this, "ДОБАВИТЬ", Toast.LENGTH_SHORT).show()
             startActivityForResult(Intent(this@MainActivity, AddPartyActivity::class.java), 1)
         }
@@ -108,7 +113,7 @@ class MainActivity : AppCompatActivity() {
     //Новая активность закрылась, данные введены, теперь добавляем в адаптер
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (data != null) {
-            var newparty = data!!.getSerializableExtra("newparty") as Party
+            var newparty = data.getSerializableExtra("newparty") as Party
             adapter.addParty(newparty)
             //adapter=PartiesAdapter(parties)
             Toast.makeText(this, newparty.name, Toast.LENGTH_LONG).show()
