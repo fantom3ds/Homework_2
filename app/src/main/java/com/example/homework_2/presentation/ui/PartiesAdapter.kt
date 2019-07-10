@@ -1,16 +1,17 @@
-package com.example.homework_2
+package com.example.homework_2.presentation.ui
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.homework_2.models.Party
+import com.example.homework_2.R
+import com.example.homework_2.data.model.Party
 import kotlinx.android.synthetic.main.item_parties_view.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class PartiesAdapter(private var parties: ArrayList<Party>) : RecyclerView.Adapter<PartiesAdapter.ViewHolder>() {
+class PartiesAdapter(private var parties: MutableList<Party>) : RecyclerView.Adapter<PartiesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_parties_view, parent, false))
@@ -60,5 +61,11 @@ class PartiesAdapter(private var parties: ArrayList<Party>) : RecyclerView.Adapt
     fun addParties(list: List<Party>) {
         parties.addAll(list)
         notifyItemInserted(parties.size - list.size)
+    }
+
+    fun setParties(list: List<Party>) {
+        parties.clear()
+        parties.addAll(list)
+        notifyDataSetChanged()
     }
 }

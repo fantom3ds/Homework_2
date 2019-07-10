@@ -1,4 +1,4 @@
-package com.example.homework_2.models
+package com.example.homework_2.data.model
 
 import java.io.Serializable
 

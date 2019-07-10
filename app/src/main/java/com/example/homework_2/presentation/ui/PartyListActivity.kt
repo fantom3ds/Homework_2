@@ -2,44 +2,72 @@ package com.example.homework_2.presentation.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.homework_2.R
-import com.example.homework_2.data.network.APIClient
 import com.example.homework_2.data.model.Party
 import com.example.homework_2.data.repository.IMainRepository
 import com.example.homework_2.data.repository.MainRepository
+import com.example.homework_2.presentation.presenter.party_list.IPartyListView
+import com.example.homework_2.presentation.presenter.party_list.PartyListPresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.header.*
 import java.util.ArrayList
 
-class MainActivity : AppCompatActivity() {
+//Засовываем интерфейс IPartyListView, чтобы были функции отображения
+class PartyListActivity : AppCompatActivity(), IPartyListView {
 
-    //private var parties = ArrayList<Party>()
+    //3 - вьюха отображает уже полученные вечеринки (шаг 2 в презентере)
+    override fun showParties(parties: List<Party>) {
+        //тут вызываем написанную функцию, полностью очистить лист и установить новый
+        adapter.setParties(parties)
+    }
 
+    override fun showError(error: String) {
+        Toast.makeText(this, error, Toast.LENGTH_LONG).show()
+    }
+
+    override fun setLoading(isLoading: Boolean) {
+        //Здесь показываем вьюху загрузки (нужно создать новую)
+        if (isLoading)
+            progress_circular2.visibility = View.VISIBLE
+        else
+            progress_circular2.visibility = View.GONE
+    }
+
+    //Поле адаптера, для последующего добавления туда новых
     private var adapter = PartiesAdapter(ArrayList<Party>())
-    var repository: IMainRepository = MainRepository()
+
+    //Инициализируем презентер
+    var presenter = PartyListPresenter(this)
+
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //Шапка
         setSupportActionBar(toolbar_back)
         supportActionBar?.title = ""
-
         toolbar_back.setNavigationOnClickListener {
             Toast.makeText(this, "НАЗАД", Toast.LENGTH_LONG).show()
         }
 
-        parties_view.adapter = adapter
         parties_view.layoutManager = LinearLayoutManager(this)
+        parties_view.adapter = adapter
+
+        //1 - пинаем презентера, просим его получить вечеринки
+        presenter.getParties()
+
 //        parties_view.adapter = PartiesAdapter(
 //            listOf(
 //                Party(
@@ -81,15 +109,6 @@ class MainActivity : AppCompatActivity() {
 //            )
 //        )
 
-        repository.getParties()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                adapter.addParties(it)
-            }, {
-                Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
-            })
-
 
     }
 
@@ -105,7 +124,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.add_party) {
             Toast.makeText(this, "ДОБАВИТЬ", Toast.LENGTH_SHORT).show()
-            startActivityForResult(Intent(this@MainActivity, AddPartyActivity::class.java), 1)
+            startActivityForResult(Intent(this@PartyListActivity, AddPartyActivity::class.java), 1)
         }
         return super.onOptionsItemSelected(item)
     }

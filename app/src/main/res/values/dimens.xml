@@ -2,4 +2,5 @@
 <resources>
     <dimen name="margin_normal">16dp</dimen>
     <dimen name="padding_normal">5dp</dimen>
+    <dimen name="margin_x2">32dp</dimen>
 </resources>

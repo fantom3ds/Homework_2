@@ -1,4 +1,4 @@
-package com.example.homework_2.api
+package com.example.homework_2.data.network
 
 import com.example.homework_2.BuildConfig
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
