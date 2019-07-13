@@ -6,10 +6,16 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@color/colorWhite">
 
+    <include
+        layout="@layout/header"
+        android:id="@+id/navigation_header_container"
+        app:layout_constraintTop_toTopOf="parent"
+            />
+
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/navigation_header_container"
             android:text="Вход для Кутежника"
             android:layout_marginTop="@dimen/margin_x3"
             android:textAppearance="@style/HeaderText"

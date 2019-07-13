@@ -3,12 +3,15 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="black">#000</color>
-    <color name="light_green">#ff03b164</color>
-    <color name="color_swamp">#ff009688</color>
-    <color name="edit_text_color">#f1f1f1</color>
-    <color name="btn_add">#ff105d3b</color>
-    <color name="white">#ffffff</color>
-    <color name="blue">#ff4a90e2</color>
-    <color name="gray">#808080</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorTransparentBlack">#bb000000</color>
+    <color name="colorLightGreen">#ff03b164</color>
+    <color name="colorSwamp">#ff009688</color>
+    <color name="colorEditText">#f1f1f1</color>
+    <color name="colorBtnAdd">#ff105d3b</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlue">#ff4a90e2</color>
+    <color name="colorGray">#808080</color>
+    <color name="colorGreenBtn">#ff105d3b</color>
+    <color name="colorLightBlack">#ff0a1f44</color>
 </resources>

@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         tools:context=".presentation.ui.PartyListActivity"
         android:orientation="vertical"
-        android:background="@color/white"
+        android:background="@color/colorWhite"
 >
 
     <include layout="@layout/header"/>
@@ -20,7 +20,7 @@
             android:textStyle="bold"
             android:textSize="34sp"
             android:text="Вечеринки"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlack"
     />
 
     <ProgressBar

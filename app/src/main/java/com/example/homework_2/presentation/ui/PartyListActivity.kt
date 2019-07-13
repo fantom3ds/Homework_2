@@ -2,7 +2,6 @@ package com.example.homework_2.presentation.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -12,13 +11,9 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.homework_2.R
 import com.example.homework_2.data.model.Party
-import com.example.homework_2.data.repository.IMainRepository
-import com.example.homework_2.data.repository.MainRepository
 import com.example.homework_2.presentation.presenter.party_list.IPartyListView
 import com.example.homework_2.presentation.presenter.party_list.PartyListPresenter
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_party_list.*
 import kotlinx.android.synthetic.main.header.*
 import java.util.ArrayList
 
@@ -53,13 +48,14 @@ class PartyListActivity : AppCompatActivity(), IPartyListView {
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_party_list)
 
         //Шапка
         setSupportActionBar(toolbar_back)
         supportActionBar?.title = ""
         toolbar_back.setNavigationOnClickListener {
-            Toast.makeText(this, "НАЗАД", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "НАЗАД", Toast.LENGTH_SHORT).show()
+            onBackPressed()
         }
 
         parties_view.layoutManager = LinearLayoutManager(this)

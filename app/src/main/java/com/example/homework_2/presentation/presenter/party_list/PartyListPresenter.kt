@@ -25,7 +25,7 @@ class PartyListPresenter(private val view: IPartyListView) {
             }, {
                 //Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                 //Вызываем метод показа ошибки
-                view.showError(it.message ?: "unknown error")
+                view.showError(it.message ?: "Unknown error")
             })
     }
 

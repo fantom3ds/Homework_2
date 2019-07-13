@@ -29,14 +29,13 @@
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Вход для Кутежника"
-            android:id="@+id/btn_start_fun"
+            android:text="Начать кутить"
+            android:id="@+id/btn_register"
             app:layout_constraintBottom_toTopOf="@id/version"
             android:textColor="@color/colorWhite"
             android:background="@drawable/rectangle_green"
             android:layout_marginBottom="@dimen/margin_x2"
             android:textAllCaps="false"
-
             android:layout_marginStart="@dimen/margin_normal"
             android:layout_marginEnd="@dimen/margin_normal"
             />
@@ -44,12 +43,12 @@
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/btn_start_fun"
+            app:layout_constraintBottom_toTopOf="@id/btn_register"
             android:layout_marginBottom="@dimen/margin_normal"
             android:background="@drawable/rectangle_white"
             android:textColor="@color/colorGreenBtn"
             android:text="Вход для Кутежника"
-            android:id="@+id/btn_sign_in"
+            android:id="@+id/btn_login"
             android:textAllCaps="false"
 
 
@@ -60,12 +59,11 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/btn_sign_in"
+            app:layout_constraintBottom_toTopOf="@id/btn_login"
             android:layout_marginBottom="@dimen/margin_x3"
             android:text="@string/welcome_text"
             android:textColor="@color/colorWhite"
             android:id="@+id/welcome_text"
-
             android:layout_marginStart="@dimen/margin_normal"
             android:layout_marginEnd="@dimen/margin_normal"
             />

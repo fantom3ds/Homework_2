@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.ui.AddPartyActivity"
-        android:background="@color/white"
+        android:background="@color/colorWhite"
 >
 
     <include layout="@layout/header"
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="Создание вечеринки"
             android:layout_margin="@dimen/margin_normal"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlack"
             android:textAlignment="center"
             android:textSize="34sp"
             android:id="@+id/header_text"
@@ -85,7 +85,7 @@
 
             android:text="Добавить"
             android:background="@drawable/rectangle_button_add"
-            android:textColor="@color/white"
+            android:textColor="@color/colorWhite"
             android:id="@+id/btn_add_party"
             android:layout_alignParentBottom="true"
     />
