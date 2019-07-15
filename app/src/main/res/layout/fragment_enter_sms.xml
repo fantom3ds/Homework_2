@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/colorWhite">
+
+    <include
+        layout="@layout/header"
+        android:id="@+id/navigation_header_container"
+        app:layout_constraintTop_toTopOf="parent"
+            />
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/navigation_header_container"
+            android:text="Вход для Кутежника"
+            android:layout_marginTop="@dimen/margin_x3"
+            android:textAppearance="@style/HeaderText"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:id="@+id/header_text"
+            />
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/header_text"
+            android:text="Пожалуйста, введи свой номер телефона"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:id="@+id/enter_phone_header"
+            />
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_05"
+            app:layout_constraintTop_toBottomOf="@id/enter_phone_header"
+            android:layout_marginTop="@dimen/margin_x3"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:background="@drawable/rectangle_edit_text"
+            android:id="@+id/user_phone"
+            />
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_green"
+            android:text="Получить код"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintTop_toBottomOf="@id/user_phone"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginTop="@dimen/margin_x2"
+            android:id="@+id/btn_getCode"
+            />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
