@@ -9,54 +9,51 @@
     <include
         layout="@layout/header"
         android:id="@+id/navigation_header_container"
-        app:layout_constraintTop_toTopOf="parent"
-            />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/navigation_header_container"
-            android:text="Вход для Кутежника"
+            android:text="Проверка кода"
             android:layout_marginTop="@dimen/margin_x3"
             android:textAppearance="@style/HeaderText"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
-            android:id="@+id/header_text"
-            />
+            android:layout_marginStart="@dimen/margin_x2"
+            android:layout_marginEnd="@dimen/margin_x2"
+            android:id="@+id/header_text"/>
+
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/header_text"
-            android:text="Пожалуйста, введи свой номер телефона"
+            android:text="Мы оправили код через SMS"
             android:layout_marginTop="@dimen/margin_normal"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
-            android:id="@+id/enter_phone_header"
-            />
+            android:layout_marginStart="@dimen/margin_x2"
+            android:layout_marginEnd="@dimen/margin_x2"
+            android:id="@+id/enter_phone_header"/>
+
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/margin_05"
+            style="@style/EditText"
             app:layout_constraintTop_toBottomOf="@id/enter_phone_header"
             android:layout_marginTop="@dimen/margin_x3"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
-            android:background="@drawable/rectangle_edit_text"
+            android:layout_marginStart="@dimen/margin_x2"
+            android:layout_marginEnd="@dimen/margin_x2"
             android:id="@+id/user_phone"
-            />
+            android:hint="Код подтверждения"/>
 
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rectangle_green"
-            android:text="Получить код"
+            android:text="Подтвердить код"
             android:textColor="@color/colorWhite"
             app:layout_constraintTop_toBottomOf="@id/user_phone"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginStart="@dimen/margin_x2"
+            android:layout_marginEnd="@dimen/margin_x2"
             android:layout_marginTop="@dimen/margin_x2"
-            android:id="@+id/btn_getCode"
-            />
+            android:id="@+id/btn_enter_code"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
