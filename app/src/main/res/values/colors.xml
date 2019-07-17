@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorBlack">#000</color>
-    <color name="colorTransparentBlack">#bb000000</color>
+    <color name="colorTransparentBlack">#33000000</color>
     <color name="colorLightGreen">#ff03b164</color>
     <color name="colorSwamp">#ff009688</color>
     <color name="colorEditText">#f1f1f1</color>

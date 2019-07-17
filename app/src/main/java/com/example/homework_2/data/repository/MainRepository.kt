@@ -15,10 +15,12 @@ class MainRepository : IMainRepository {
     private object Holder {
         val INSTANCE = MainRepository()
     }
-
-
+    
 
     private val apiService = APIClient.instance.apiService
+
+
+
 
     override fun getParties(): Single<List<Party>> {
         return apiService.getParties()

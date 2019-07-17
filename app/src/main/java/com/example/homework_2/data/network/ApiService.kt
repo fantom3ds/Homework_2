@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 
 interface ApiService {
-    @GET("users")
+    @GET("party/")
     fun getParties(): Single<List<Party>>
 }

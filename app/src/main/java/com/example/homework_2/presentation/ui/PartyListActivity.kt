@@ -8,7 +8,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.homework_2.App
 import com.example.homework_2.R
 import com.example.homework_2.data.model.Party
 import com.example.homework_2.presentation.presenter.party_list.IPartyListView
@@ -49,6 +51,9 @@ class PartyListActivity : AppCompatActivity(), IPartyListView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_party_list)
+
+        //AlertDialog.Builder(this).setMessage(App.instance.token).show()
+
 
         //Шапка
         setSupportActionBar(toolbar_back)

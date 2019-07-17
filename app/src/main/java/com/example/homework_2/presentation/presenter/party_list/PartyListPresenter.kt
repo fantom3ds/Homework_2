@@ -1,8 +1,5 @@
 package com.example.homework_2.presentation.presenter.party_list
 
-import android.widget.Toast
-import com.example.homework_2.data.model.Party
-import com.example.homework_2.data.repository.IMainRepository
 import com.example.homework_2.data.repository.MainRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

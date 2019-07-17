@@ -19,8 +19,8 @@
             android:text="Вход для Кутежника"
             android:layout_marginTop="@dimen/margin_x3"
             android:textAppearance="@style/HeaderText"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginStart="@dimen/margin_x2"
+            android:layout_marginEnd="@dimen/margin_x2"
             android:id="@+id/header_text"
             />
     <TextView
@@ -29,20 +29,21 @@
             app:layout_constraintTop_toBottomOf="@id/header_text"
             android:text="Пожалуйста, введи свой номер телефона"
             android:layout_marginTop="@dimen/margin_normal"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginStart="@dimen/margin_x2"
+            android:layout_marginEnd="@dimen/margin_x2"
             android:id="@+id/enter_phone_header"
             />
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/margin_05"
             app:layout_constraintTop_toBottomOf="@id/enter_phone_header"
             android:layout_marginTop="@dimen/margin_x3"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
-            android:background="@drawable/rectangle_edit_text"
-            android:id="@+id/user_phone"
+            android:layout_marginStart="@dimen/margin_x2"
+            android:layout_marginEnd="@dimen/margin_x2"
+            style="@style/EditText"
+            android:hint="+7 777 123 45 67"
+            android:inputType="phone"
+            android:id="@+id/et_login_phone"
             />
 
     <Button
@@ -51,11 +52,11 @@
             android:background="@drawable/rectangle_green"
             android:text="Получить код"
             android:textColor="@color/colorWhite"
-            app:layout_constraintTop_toBottomOf="@id/user_phone"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
+            app:layout_constraintTop_toBottomOf="@id/et_login_phone"
+            android:layout_marginStart="@dimen/margin_x2"
+            android:layout_marginEnd="@dimen/margin_x2"
             android:layout_marginTop="@dimen/margin_x2"
-            android:id="@+id/btn_getCode"
+            android:id="@+id/btn_enter_code"
             />
 
 

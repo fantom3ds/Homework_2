@@ -40,7 +40,7 @@
             android:layout_marginTop="@dimen/margin_x3"
             android:layout_marginStart="@dimen/margin_x2"
             android:layout_marginEnd="@dimen/margin_x2"
-            android:id="@+id/user_phone"
+            android:id="@+id/et_check_code_code"
             android:hint="Код подтверждения"/>
 
     <Button
@@ -49,7 +49,7 @@
             android:background="@drawable/rectangle_green"
             android:text="Подтвердить код"
             android:textColor="@color/colorWhite"
-            app:layout_constraintTop_toBottomOf="@id/user_phone"
+            app:layout_constraintTop_toBottomOf="@id/et_check_code_code"
             android:layout_marginStart="@dimen/margin_x2"
             android:layout_marginEnd="@dimen/margin_x2"
             android:layout_marginTop="@dimen/margin_x2"

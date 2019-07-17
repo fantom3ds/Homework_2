@@ -6,13 +6,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.ui.StartActivity"
-        android:background="@drawable/background"
 >
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/background2"/>
 
     <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorTransparentBlack"/>
+            android:background="@drawable/gradient_background"/>
 
     <TextView
             android:layout_width="match_parent"
@@ -30,14 +34,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Начать кутить"
-            android:id="@+id/btn_register"
             app:layout_constraintBottom_toTopOf="@id/version"
             android:textColor="@color/colorWhite"
             android:background="@drawable/rectangle_green"
             android:layout_marginBottom="@dimen/margin_x2"
             android:textAllCaps="false"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginStart="@dimen/margin_x2"
+            android:layout_marginEnd="@dimen/margin_x2"
+
+            android:id="@+id/btn_register"
             />
 
     <Button
@@ -48,12 +53,11 @@
             android:background="@drawable/rectangle_white"
             android:textColor="@color/colorGreenBtn"
             android:text="Вход для Кутежника"
-            android:id="@+id/btn_login"
             android:textAllCaps="false"
+            android:layout_marginStart="@dimen/margin_x2"
+            android:layout_marginEnd="@dimen/margin_x2"
 
-
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
+            android:id="@+id/btn_login"
             />
 
     <TextView
@@ -64,8 +68,8 @@
             android:text="@string/welcome_text"
             android:textColor="@color/colorWhite"
             android:id="@+id/welcome_text"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginStart="@dimen/margin_x2"
+            android:layout_marginEnd="@dimen/margin_x2"
             />
 
     <TextView
@@ -76,9 +80,8 @@
             android:textColor="@color/colorWhite"
             android:textSize="34sp"
             android:layout_marginBottom="@dimen/margin_x3"
-
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginStart="@dimen/margin_x2"
+            android:layout_marginEnd="@dimen/margin_x2"
             />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,10 +20,12 @@
             android:text="Начать кутить"
             android:textAppearance="@style/HeaderText"
             app:layout_constraintTop_toBottomOf="@id/navigation_header_container"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginStart="@dimen/margin_x2"
+            android:layout_marginEnd="@dimen/margin_x2"
             android:layout_marginTop="@dimen/margin_normal"
             android:id="@+id/header_text"
+
+
             />
 
     <TextView
@@ -31,8 +33,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/header_text"
             android:text="Укажи свое имя и телефон"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginStart="@dimen/margin_x2"
+            android:layout_marginEnd="@dimen/margin_x2"
             android:layout_marginTop="@dimen/margin_05"
             android:textSize="16sp"
             android:id="@+id/welcome_text"
@@ -41,26 +43,28 @@
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_edit_text"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginStart="@dimen/margin_x2"
+            android:layout_marginEnd="@dimen/margin_x2"
             android:layout_marginTop="@dimen/margin_x3"
-            android:padding="@dimen/margin_05"
+            style="@style/EditText"
             app:layout_constraintTop_toBottomOf="@id/welcome_text"
-            android:id="@+id/user_name"
+            android:hint="Имя"
+
+            android:id="@+id/et_register_user_name"
             />
 
 
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_edit_text"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
-            android:padding="@dimen/margin_05"
-            app:layout_constraintTop_toBottomOf="@id/user_name"
+            android:layout_marginStart="@dimen/margin_x2"
+            android:layout_marginEnd="@dimen/margin_x2"
+            app:layout_constraintTop_toBottomOf="@id/et_register_user_name"
             android:layout_marginTop="@dimen/margin_05"
-            android:id="@+id/user_phone"
+            style="@style/EditText"
+            android:hint="+7 777 123 45 67"
+            android:inputType="phone"
+            android:id="@+id/et_register_phone"
             />
 
     <Button
@@ -69,23 +73,25 @@
             android:background="@drawable/rectangle_green"
             android:textColor="@color/colorWhite"
             android:text="Получить код"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
-            app:layout_constraintTop_toBottomOf="@id/user_phone"
+            android:layout_marginStart="@dimen/margin_x2"
+            android:layout_marginEnd="@dimen/margin_x2"
+            app:layout_constraintTop_toBottomOf="@id/et_register_phone"
             android:layout_marginTop="@dimen/margin_x3"
-            android:id="@+id/btn_getCode"
+            android:id="@+id/btn_register_getCode"
             />
 
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
             android:text="Уже был кутежником?"
             android:textAllCaps="false"
-            app:layout_constraintTop_toBottomOf="@id/btn_getCode"
+            app:layout_constraintTop_toBottomOf="@id/btn_register_getCode"
             android:layout_marginTop="@dimen/margin_x2"
-            android:id="@+id/has_been_fun"
+            android:layout_marginStart="@dimen/margin_x2"
+            android:layout_marginEnd="@dimen/margin_x2"
             style="@style/Widget.AppCompat.Button.Borderless"
+
+            android:id="@+id/btn_register_been_fun"
             />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
