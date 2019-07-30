@@ -9,11 +9,10 @@ import com.example.homework_2.R
 import com.example.homework_2.data.model.Party
 import kotlinx.android.synthetic.main.item_parties_view.view.*
 import java.text.SimpleDateFormat
-import java.util.*
 
 class PartiesAdapter(private var parties: MutableList<Party>) : RecyclerView.Adapter<PartiesAdapter.ViewHolder>() {
 
-    var onItemClickFunction: ((party: Party) -> Unit)? = null
+    var onItemClickFunction: ((party: Party, view: View) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_parties_view, parent, false))
@@ -58,7 +57,7 @@ class PartiesAdapter(private var parties: MutableList<Party>) : RecyclerView.Ada
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         init {
             itemView.rootView.setOnClickListener {
-                onItemClickFunction?.invoke(parties[adapterPosition])
+                onItemClickFunction?.invoke(parties[adapterPosition], itemView)
             }
         }
     }
