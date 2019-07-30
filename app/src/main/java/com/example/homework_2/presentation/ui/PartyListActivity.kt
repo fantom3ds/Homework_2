@@ -47,14 +47,10 @@ class PartyListActivity : AppCompatActivity(), IPartyListView {
     var presenter = PartyListPresenter(this)
 
 
-    @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_party_list)
-
         //AlertDialog.Builder(this).setMessage(App.instance.token).show()
-
-
         //Шапка
         setSupportActionBar(toolbar_back)
         supportActionBar?.title = ""
@@ -69,46 +65,11 @@ class PartyListActivity : AppCompatActivity(), IPartyListView {
         //1 - пинаем презентера, просим его получить вечеринки
         presenter.getParties()
 
-//        parties_view.adapter = PartiesAdapter(
-//            listOf(
-//                Party(
-//                    "Вписка в честь сдачи сессии",
-//                    1500,
-//                    2001,
-//                    3045,
-//                    "https://pp.userapi.com/c850424/v850424950/28176/KnVFpduuHdc.jpg?ava=1",
-//                    0,
-//                    false),
-//                Party("Днюха у Катюхи",
-//                    1500,
-//                    5077,
-//                    4006,
-//                    "http://goo.gl/gEgYUd",
-//                    3,
-//                    true),
-//                Party("Моя днюха",
-//                    1500,
-//                    30305,
-//                    10033,
-//                    "https://pp.userapi.com/c849024/v849024810/1a8917/cXWWMGS9Jjw.jpg",
-//                    8,
-//                    true),
-//                Party("23 февраля",
-//                    1500,
-//                    507,
-//                    1009,
-//                    "https://pp.userapi.com/c623131/v623131726/483be/bZ6JWMQyzOU.jpg?ava=1",
-//                    33,
-//                    false),
-//                Party("День вступления в клан",
-//                    1500,
-//                    5133,
-//                    4002,
-//                    "https://pp.userapi.com/c840323/v840323362/6a938/Iq-wkGFEtCw.jpg?ava=1",
-//                    1,
-//                    false)
-//            )
-//        )
+
+
+        adapter.onItemClickFunction = { party ->
+            Toast.makeText(this, party.name, Toast.LENGTH_LONG).show()
+        }
 
 
     }
