@@ -11,10 +11,8 @@ import kotlinx.android.synthetic.main.activity_add_party.*
 import kotlinx.android.synthetic.main.activity_add_party.party_name
 import kotlinx.android.synthetic.main.header.*
 import kotlin.random.Random
-import android.widget.DatePicker
 import android.app.DatePickerDialog.OnDateSetListener
-import android.R
-import java.time.Year
+import com.example.homework_2.presentation.ui.party_list.PartyListActivity
 import java.util.*
 
 

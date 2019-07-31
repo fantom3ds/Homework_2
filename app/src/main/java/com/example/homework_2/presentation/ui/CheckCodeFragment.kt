@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.homework_2.R
 import com.example.homework_2.presentation.presenter.check_code.CheckCodePresenter
 import com.example.homework_2.presentation.presenter.check_code.ICheckCodeView
+import com.example.homework_2.presentation.ui.party_list.PartyListActivity
 import kotlinx.android.synthetic.main.fragment_check_code.*
 import kotlinx.android.synthetic.main.header.*
 

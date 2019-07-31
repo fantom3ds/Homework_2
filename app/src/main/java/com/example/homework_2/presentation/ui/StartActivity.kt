@@ -3,11 +3,9 @@ package com.example.homework_2.presentation.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import com.example.homework_2.App
 import com.example.homework_2.R
-import kotlinx.android.synthetic.main.fragment_start.*
-import kotlinx.android.synthetic.main.header.*
+import com.example.homework_2.presentation.ui.party_list.PartyListActivity
 
 class StartActivity : AppCompatActivity() {
 

@@ -5,4 +5,5 @@
     <dimen name="margin_x2">32dp</dimen>
     <dimen name="margin_x3">48dp</dimen>
     <dimen name="margin_05">8dp</dimen>
+    <dimen name="coll_header_height">350dp</dimen>
 </resources>

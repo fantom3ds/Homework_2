@@ -1,4 +1,4 @@
-package com.example.homework_2.presentation.ui
+package com.example.homework_2.presentation.ui.party_list
 
 import android.view.LayoutInflater
 import android.view.View

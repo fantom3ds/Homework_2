@@ -1,4 +1,4 @@
-package com.example.homework_2.presentation.ui
+package com.example.homework_2.presentation.ui.party_list
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,14 +7,17 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.homework_2.R
 import com.example.homework_2.data.model.Party
 import com.example.homework_2.presentation.presenter.party_list.IPartyListView
 import com.example.homework_2.presentation.presenter.party_list.PartyListPresenter
+import com.example.homework_2.presentation.ui.AddPartyActivity
+import com.example.homework_2.presentation.ui.users_list.UserListFragment
 import kotlinx.android.synthetic.main.activity_party_list.*
 import kotlinx.android.synthetic.main.item_parties_view.view.*
-import java.util.*
 
 //Засовываем интерфейс IPartyListView, чтобы были функции отображения
 class PartyListActivity : AppCompatActivity(), IPartyListView {
@@ -89,6 +92,9 @@ class PartyListActivity : AppCompatActivity(), IPartyListView {
         )
     )
 
+    private lateinit var fragments: List<Fragment>
+    private lateinit var titles: List<String>
+
     //Инициализируем презентер
     var presenter = PartyListPresenter(this)
 
@@ -100,28 +106,47 @@ class PartyListActivity : AppCompatActivity(), IPartyListView {
         //AlertDialog.Builder(this).setMessage(App.instance.token).show()
         //Шапка
         setSupportActionBar(toolbar)
-        //supportActionBar?.title = ""
+
+//        supportFragmentManager
+//            .beginTransaction()//начинаем транзанкцию
+//            .replace(
+//                R.id.container,
+//                PartyListFragment(),
+//                "party_list_fragment"
+//            )//заменяет в контейнере по id, ставит фрагмент туда
+//            .addToBackStack(null) //чтобы работало возвращение
+//            .commit()//конец транзакции
+
+
+        fragments = listOf(PartyListFragment(), UserListFragment())
+        titles = listOf("Вечеринки", "Пользователи")
+
+        viewpager.adapter = MyPagerAdapter(supportFragmentManager)
+        //связываем табы с ViewPager
+        plv_tab_layout.setupWithViewPager(viewpager)
+
+
 
         toolbar.setNavigationOnClickListener {
             Toast.makeText(this, "НАЗАД", Toast.LENGTH_SHORT).show()
             //onBackPressed()
         }
 
-        recyclerview.layoutManager = LinearLayoutManager(this)
-        recyclerview.adapter = adapter
+
+//        recyclerview.layoutManager = LinearLayoutManager(this)
+//        recyclerview.adapter = adapter
 
         //1 - пинаем презентера, просим его получить вечеринки
         //presenter.getParties()
 
 
-
-
-        adapter.onItemClickFunction = { party, view ->
-            Toast.makeText(this, party.name, Toast.LENGTH_LONG).show()
-
-            civ_user_avatar.setImageDrawable(view.image.drawable)
-            tv_party_name.text = view.party_name.text
-        }
+        //При нажатии на элемент списка помещаем название вечеринки и фотку в шапку
+//        adapter.onItemClickFunction = { party, view ->
+//            Toast.makeText(this, party.name, Toast.LENGTH_LONG).show()
+//
+//            civ_user_avatar.setImageDrawable(view.image.drawable)
+//            tv_party_name.text = view.party_name.text
+//        }
 
 
     }
@@ -151,6 +176,22 @@ class PartyListActivity : AppCompatActivity(), IPartyListView {
             //adapter=PartiesAdapter(parties)
             Toast.makeText(this, newparty.name, Toast.LENGTH_LONG).show()
             super.onActivityResult(requestCode, resultCode, data)
+        }
+    }
+
+
+    inner class MyPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
+        //получаем текущий элемент
+        override fun getItem(position: Int): Fragment {
+            return fragments[position]
+        }
+
+        override fun getCount(): Int {
+            return fragments.size
+        }
+
+        override fun getPageTitle(position: Int): CharSequence? {
+            return titles[position]
         }
     }
 
