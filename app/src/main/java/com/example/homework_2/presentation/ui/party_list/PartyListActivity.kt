@@ -1,5 +1,6 @@
 package com.example.homework_2.presentation.ui.party_list
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -9,40 +10,27 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.fragment.app.FragmentPagerAdapter
 import com.example.homework_2.R
 import com.example.homework_2.data.model.Party
 import com.example.homework_2.presentation.presenter.party_list.IPartyListView
 import com.example.homework_2.presentation.presenter.party_list.PartyListPresenter
-import com.example.homework_2.presentation.ui.AddPartyActivity
+import com.example.homework_2.presentation.ui.BalanceFragment
+import com.example.homework_2.presentation.ui.MusicFragment
 import com.example.homework_2.presentation.ui.users_list.UserListFragment
 import kotlinx.android.synthetic.main.activity_party_list.*
-import kotlinx.android.synthetic.main.item_parties_view.view.*
+
+
 
 //Засовываем интерфейс IPartyListView, чтобы были функции отображения
-class PartyListActivity : AppCompatActivity(), IPartyListView {
+class PartyListActivity : AppCompatActivity() {
 
-    //3 - вьюха отображает уже полученные вечеринки (шаг 2 в презентере)
-    override fun showParties(parties: List<Party>) {
-        //тут вызываем написанную функцию, полностью очистить лист и установить новый
-        adapter.setParties(parties)
-    }
-
-    override fun showError(error: String) {
-        Toast.makeText(this, error, Toast.LENGTH_LONG).show()
-    }
-
-    override fun setLoading(isLoading: Boolean) {
-        //Здесь показываем вьюху загрузки (нужно создать новую)
-        alertDialog?.dismiss()
-        if (isLoading) {
-            alertDialog = AlertDialog.Builder(this)
-                .setView(R.layout.progressbar_for_alert_dialog)
-                .setCancelable(false)
-                .create()
-            alertDialog?.show()
-        }
-    }
+    val icons = listOf(
+        R.drawable.ic_person_black_24dp,
+        R.drawable.ic_attach_money_black_24dp,
+        R.drawable.ic_shopping_cart_black_24dp,
+        R.drawable.ic_queue_music_black_24dp
+    )
 
     //Поле адаптера, для последующего добавления туда новых
     val adapter = PartiesAdapter(
@@ -92,14 +80,6 @@ class PartyListActivity : AppCompatActivity(), IPartyListView {
         )
     )
 
-    private lateinit var fragments: List<Fragment>
-    private lateinit var titles: List<String>
-
-    //Инициализируем презентер
-    var presenter = PartyListPresenter(this)
-
-    private var alertDialog: AlertDialog? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_party_list)
@@ -107,23 +87,14 @@ class PartyListActivity : AppCompatActivity(), IPartyListView {
         //Шапка
         setSupportActionBar(toolbar)
 
-//        supportFragmentManager
-//            .beginTransaction()//начинаем транзанкцию
-//            .replace(
-//                R.id.container,
-//                PartyListFragment(),
-//                "party_list_fragment"
-//            )//заменяет в контейнере по id, ставит фрагмент туда
-//            .addToBackStack(null) //чтобы работало возвращение
-//            .commit()//конец транзакции
 
-
-        fragments = listOf(PartyListFragment(), UserListFragment())
-        titles = listOf("Вечеринки", "Пользователи")
-
-        viewpager.adapter = MyPagerAdapter(supportFragmentManager)
+        viewpager.adapter = SampleFragmentPagerAdapter(supportFragmentManager, this@PartyListActivity)
         //связываем табы с ViewPager
         plv_tab_layout.setupWithViewPager(viewpager)
+        for (i in 0 until icons.size) {
+            plv_tab_layout.getTabAt(i)?.setIcon(icons[i])
+        }
+
 
 
 
@@ -133,20 +104,9 @@ class PartyListActivity : AppCompatActivity(), IPartyListView {
         }
 
 
-//        recyclerview.layoutManager = LinearLayoutManager(this)
-//        recyclerview.adapter = adapter
-
-        //1 - пинаем презентера, просим его получить вечеринки
-        //presenter.getParties()
 
 
-        //При нажатии на элемент списка помещаем название вечеринки и фотку в шапку
-//        adapter.onItemClickFunction = { party, view ->
-//            Toast.makeText(this, party.name, Toast.LENGTH_LONG).show()
-//
-//            civ_user_avatar.setImageDrawable(view.image.drawable)
-//            tv_party_name.text = view.party_name.text
-//        }
+
 
 
     }
@@ -180,20 +140,31 @@ class PartyListActivity : AppCompatActivity(), IPartyListView {
     }
 
 
-    inner class MyPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
-        //получаем текущий элемент
-        override fun getItem(position: Int): Fragment {
-            return fragments[position]
-        }
+    inner class SampleFragmentPagerAdapter(fm: FragmentManager, private val context: Context) :
+        FragmentPagerAdapter(fm) {
+
+        private val fragments = listOf(
+            PartyListFragment(),
+            BalanceFragment(),
+            UserListFragment(),
+            MusicFragment()
+        )
 
         override fun getCount(): Int {
             return fragments.size
         }
 
-        override fun getPageTitle(position: Int): CharSequence? {
-            return titles[position]
+        override fun getItem(position: Int): Fragment {
+            return fragments[position]
         }
-    }
 
+        override fun getPageTitle(position: Int): CharSequence? {
+            // генерируем заголовок в зависимости от позиции
+            //return tabTitles[position]
+            return null
+        }
+
+
+    }
 
 }

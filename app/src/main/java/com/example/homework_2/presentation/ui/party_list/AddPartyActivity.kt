@@ -1,4 +1,4 @@
-package com.example.homework_2.presentation.ui
+package com.example.homework_2.presentation.ui.party_list
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.activity_add_party.party_name
 import kotlinx.android.synthetic.main.header.*
 import kotlin.random.Random
 import android.app.DatePickerDialog.OnDateSetListener
-import com.example.homework_2.presentation.ui.party_list.PartyListActivity
 import java.util.*
 
 

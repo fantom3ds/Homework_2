@@ -1,4 +1,4 @@
-package com.example.homework_2.presentation.ui
+package com.example.homework_2.presentation.ui.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

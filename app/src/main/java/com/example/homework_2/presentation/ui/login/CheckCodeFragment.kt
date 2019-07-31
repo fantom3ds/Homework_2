@@ -1,4 +1,4 @@
-package com.example.homework_2.presentation.ui
+package com.example.homework_2.presentation.ui.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -35,7 +35,8 @@ class CheckCodeFragment : Fragment(), ICheckCodeView {
             val args = Bundle()//пустой объект чтобы туда что-то класть
             args.putString("phone", phone)//кладем туда телефон
 
-            val flag = CheckCodeFragment()//создаем Instance нового фрагмента
+            val flag =
+                CheckCodeFragment()//создаем Instance нового фрагмента
             flag.arguments = args //
             return flag
         }

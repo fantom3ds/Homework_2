@@ -26,4 +26,10 @@
         <item name="android:textColor">#00ffffff</item>
     </style>
 
+    <style name="ValueText">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
 </resources>

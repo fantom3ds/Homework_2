@@ -1,4 +1,4 @@
-package com.example.homework_2.presentation.ui
+package com.example.homework_2.presentation.ui.login
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,7 +20,9 @@ class RegisterFragment : Fragment(), IRegisterView {
     override fun successRegister() {
         //Вызываем фрагмент проверки кода,туда передаем телефон из этого фрагмента
         activity?.supportFragmentManager?.beginTransaction()
-            ?.replace(R.id.container, CheckCodeFragment.newInstance(et_register_phone.text.toString()))
+            ?.replace(R.id.container,
+                CheckCodeFragment.newInstance(et_register_phone.text.toString())
+            )
             ?.addToBackStack(null)
             ?.commit()
     }

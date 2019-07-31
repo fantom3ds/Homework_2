@@ -1,4 +1,4 @@
-package com.example.homework_2.presentation.ui
+package com.example.homework_2.presentation.ui.login
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.homework_2.R
-import com.example.homework_2.data.repository.LoginRepository
 import com.example.homework_2.presentation.presenter.login.ILoginView
 import com.example.homework_2.presentation.presenter.login.LoginPresenter
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -23,7 +22,9 @@ class LoginFragment : Fragment(), ILoginView {
 
     override fun successLogin(token: String) {
         activity?.supportFragmentManager?.beginTransaction()
-            ?.replace(R.id.container, CheckCodeFragment.newInstance(et_login_phone.text.toString()))
+            ?.replace(R.id.container,
+                CheckCodeFragment.newInstance(et_login_phone.text.toString())
+            )
             ?.addToBackStack(null)
             ?.commit()
     }

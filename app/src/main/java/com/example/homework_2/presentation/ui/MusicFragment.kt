@@ -1,4 +1,4 @@
-package com.example.homework_2.presentation.ui.users_list
+package com.example.homework_2.presentation.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,18 +8,18 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.homework_2.R
 
-class UserListFragment :Fragment(){
-
+class MusicFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_user_list, container, false)
+        return inflater.inflate(R.layout.fragment_music, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Toast.makeText(activity, "Музыка", Toast.LENGTH_LONG).show()
     }
 
     override fun onResume() {
         super.onResume()
-        //Toast.makeText(activity, "Пользователи", Toast.LENGTH_LONG).show()
+        //Toast.makeText(activity, "Музыка", Toast.LENGTH_LONG).show()
     }
 }

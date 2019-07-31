@@ -14,10 +14,10 @@
 
             android:name=".App"
             >
-        <activity android:name=".presentation.ui.StartActivity" android:screenOrientation="portrait">
+        <activity android:name=".presentation.ui.login.StartActivity" android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".presentation.ui.AddPartyActivity">
+        <activity android:name=".presentation.ui.party_list.AddPartyActivity">
         </activity>
         <activity android:name=".presentation.ui.party_list.PartyListActivity">
             <intent-filter>
