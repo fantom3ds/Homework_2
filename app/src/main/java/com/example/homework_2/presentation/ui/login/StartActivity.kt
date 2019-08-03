@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.homework_2.App
 import com.example.homework_2.R
-import com.example.homework_2.presentation.ui.party_list.PartyListActivity
+import com.example.homework_2.presentation.ui.party_list.party_card.PartyCardFragment
 
 class StartActivity : AppCompatActivity() {
 
@@ -14,7 +14,7 @@ class StartActivity : AppCompatActivity() {
         setContentView(R.layout.activity_start)
 
         if(App.instance.token!=null){
-            startActivity(Intent(this, PartyListActivity::class.java))
+            startActivity(Intent(this, PartyCardFragment::class.java))
             //Завершаем эту, чтобы по кнопке назад не перейти сюда
             finish()
         }

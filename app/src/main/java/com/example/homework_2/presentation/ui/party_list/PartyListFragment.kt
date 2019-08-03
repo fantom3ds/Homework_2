@@ -1,27 +1,24 @@
 package com.example.homework_2.presentation.ui.party_list
 
+import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.homework_2.R
 import com.example.homework_2.data.model.Party
-import com.example.homework_2.presentation.presenter.party_list.IPartyListView
-import kotlinx.android.synthetic.main.activity_party_list.*
+import com.example.homework_2.presentation.ui.party_list.add_party.AddPartyFragment
+import com.example.homework_2.presentation.ui.party_list.party_card.PartyCardFragment
 import kotlinx.android.synthetic.main.fragment_party_list.*
-import kotlinx.android.synthetic.main.item_parties_view.view.*
+import kotlinx.android.synthetic.main.header.*
 
 
-class PartyListFragment() : Fragment(),IPartyListView {
+class PartyListFragment() : Fragment() {
 
     //1 - пинаем презентера, просим его получить вечеринки
     //presenter.getParties()
-
-    private var alertDialog: AlertDialog? = null
 
     private val adapter = PartiesAdapter(
         arrayListOf(
@@ -70,6 +67,8 @@ class PartyListFragment() : Fragment(),IPartyListView {
         )
     )
 
+    private var mListener: OnFragmentInteractionListener? = null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_party_list, container, false)
     }
@@ -77,40 +76,55 @@ class PartyListFragment() : Fragment(),IPartyListView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter.onItemClickFunction = { _, view ->
-            activity?.civ_user_avatar?.setImageDrawable(view.image.drawable)
-            activity?.tv_party_name?.text = view.party_name.text
-        }
-
         fr_rv_party_list.layoutManager = LinearLayoutManager(context)
         fr_rv_party_list.adapter = adapter
 
-    }
+        (context as AppCompatActivity).setSupportActionBar(toolbar_back)
+        (context as AppCompatActivity).supportActionBar?.title = "Вечеринки"
 
-
-
-    //3 - вьюха отображает уже полученные вечеринки (шаг 2 в презентере)
-    override fun showParties(parties: List<Party>) {
-        //тут вызываем написанную функцию, полностью очистить лист и установить новый
-        //adapter.setParties(parties)
-        adapter.parties = parties as MutableList<Party>
-    }
-
-    override fun showError(error: String) {
-        Toast.makeText(context, error, Toast.LENGTH_LONG).show()
-    }
-
-    override fun setLoading(isLoading: Boolean) {
-        //Здесь показываем вьюху загрузки (нужно создать новую)
-        alertDialog?.dismiss()
-        if (isLoading) {
-            alertDialog = context?.let {
-                AlertDialog.Builder(it)
-                    .setView(R.layout.progressbar_for_alert_dialog)
-                    .setCancelable(false)
-                    .create()
-            }
-            alertDialog?.show()
+        //(context as AppCompatActivity).setSupportActionBar(toolbar_back)
+        toolbar_back?.setNavigationOnClickListener {
+            activity?.onBackPressed()
         }
+        //Если во фрагменте есть собственная менюшка, нужно прописать вот это
+        setHasOptionsMenu(true)
+
+        adapter.onItemClickFunction = { party, _ ->
+
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.aparty_list_frame_layout, PartyCardFragment.newInstance(party),"PCF")
+                ?.addToBackStack(null)
+                ?.commit()
+        }
+    }
+
+
+    //Прорисовываем меню добавления, кнопку
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.main_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item?.itemId == R.id.add_party) {
+            Toast.makeText(context, "ДОБАВИТЬ", Toast.LENGTH_SHORT).show()
+
+            activity?.supportFragmentManager
+                ?.beginTransaction()
+                ?.replace(R.id.aparty_list_frame_layout, AddPartyFragment(), "APF")
+                ?.addToBackStack(null)
+                ?.commit()
+            //Прописать открытие фрагмента с добавлением
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun addParty(party: Party){
+        adapter.addParty(party)
+    }
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        mListener = context as OnFragmentInteractionListener
     }
 }

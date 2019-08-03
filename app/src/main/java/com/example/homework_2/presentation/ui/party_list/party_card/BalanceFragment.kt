@@ -1,4 +1,4 @@
-package com.example.homework_2.presentation.ui
+package com.example.homework_2.presentation.ui.party_list.party_card
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -19,6 +19,5 @@ class BalanceFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        //Toast.makeText(activity,"Баланс", Toast.LENGTH_LONG).show()
     }
 }

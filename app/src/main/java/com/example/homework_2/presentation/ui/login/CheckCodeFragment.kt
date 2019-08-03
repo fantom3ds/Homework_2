@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.homework_2.R
 import com.example.homework_2.presentation.presenter.check_code.CheckCodePresenter
 import com.example.homework_2.presentation.presenter.check_code.ICheckCodeView
-import com.example.homework_2.presentation.ui.party_list.PartyListActivity
+import com.example.homework_2.presentation.ui.party_list.party_card.PartyCardFragment
 import kotlinx.android.synthetic.main.fragment_check_code.*
 import kotlinx.android.synthetic.main.header.*
 
@@ -19,7 +19,7 @@ class CheckCodeFragment : Fragment(), ICheckCodeView {
     private val presenter = CheckCodePresenter(this)
 
     override fun trueCode() {
-        startActivity(Intent(context, PartyListActivity::class.java))
+        startActivity(Intent(context, PartyCardFragment::class.java))
         activity?.finish()
     }
 

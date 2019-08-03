@@ -1,4 +1,4 @@
-package com.example.homework_2.presentation.ui.users_list
+package com.example.homework_2.presentation.ui.party_list.party_card
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,14 +12,5 @@ class UserListFragment :Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_user_list, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        //Toast.makeText(activity, "Пользователи", Toast.LENGTH_LONG).show()
     }
 }
